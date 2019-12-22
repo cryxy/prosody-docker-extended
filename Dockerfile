@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM ubuntu:bionic
 MAINTAINER Victor Kulichenko <onclev@gmail.com>
 COPY prosody.list /etc/apt/sources.list.d/
 COPY ./entrypoint.sh /usr/bin/entrypoint.sh
@@ -18,6 +18,7 @@ ADD https://prosody.im/files/prosody-debian-packages.key /root/key
 RUN set -x \
  && apt-key add /root/key && rm /root/key \
  && apt-get update -qq \
+ && apt-get upgrade -y \
  && echo prosody-migrator${PROSODY_VERSION:--0.9} | sed -e 's/prosody-migrator-0.9//' \
   | xargs apt-get install -qy telnet \
     apt-utils mercurial lua-sec lua-event lua-zlib lua-ldap \
