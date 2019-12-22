@@ -27,3 +27,13 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
+    - task: Docker@2
+      displayName: Docker login    
+      inputs:
+        containerRegistry: 'cryxy@docker@hub'
+        command: 'login'
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'cryxy@docker@hub'
+        repository: 'prosody-extended'
+        command: 'push'
