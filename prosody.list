@@ -1,2 +1,2 @@
-deb http://packages.prosody.im/debian xenial main
+deb http://packages.prosody.im/debian bionic main
 
