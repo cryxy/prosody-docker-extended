@@ -7,6 +7,9 @@ trigger:
 schedules:
 - cron: "0 2 * * *"
   displayName: "Daily nightly build"
+  branches:
+    include:
+    - master
   always: true
 
 resources:
