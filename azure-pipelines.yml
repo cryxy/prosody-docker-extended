@@ -24,20 +24,15 @@ stages:
       vmImage: 'ubuntu-latest'
     steps:
     - task: Docker@2
-      displayName: Build an image
-      inputs:
-        command: build
-        dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-        tags: |
-          $(tag)
-    - task: Docker@2
       displayName: Docker login    
       inputs:
         containerRegistry: 'cryxy@docker@hub'
         command: 'login'
     - task: Docker@2
-      displayName: Docker Push
+      displayName: Build and push the image
       inputs:
-        containerRegistry: 'cryxy@docker@hub'
-        repository: 'prosody-extended'
-        command: 'push'
+        command: buildAndPush
+        dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+        repository: cryxy/prosody-extended
+        tags: |
+          $(tag)
