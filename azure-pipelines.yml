@@ -4,6 +4,9 @@
 
 trigger:
 - master
+- cron: "0 2 * * *"
+  displayName: "Daily nightly build"
+  always: true
 
 resources:
 - repo: self
