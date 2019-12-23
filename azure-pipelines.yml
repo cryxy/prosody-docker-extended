@@ -4,6 +4,7 @@
 
 trigger:
 - master
+schedules:
 - cron: "0 2 * * *"
   displayName: "Daily nightly build"
   always: true
