@@ -15,9 +15,6 @@ schedules:
 resources:
 - repo: self
 
-variables:
-  tag: '$(Build.BuildId)'
-
 stages:
 - stage: Build
   displayName: Build image
@@ -37,6 +34,7 @@ stages:
       inputs:
         command: buildAndPush
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-        repository: cryxy/prosody-extended
+        repository: cryxy/gps103-to-owntracks
         tags: |
-          $(tag)
+          '$(json.version)'
+          'latest'
